@@ -17,7 +17,7 @@ rainbow() {
 
 clear
 rainbow "================================================"
-rainbow "    WELCOME TO Lapiogamer Auto Setup"
+rainbow "    WELCOME TO aggamer22 Auto Setup"
 rainbow "================================================"
 echo
 
@@ -29,7 +29,6 @@ echo "  1) Setup IDX VM (dev.nix + script.sh)"
 echo "  2) Run Ubuntu VNC Docker"
 echo "  3) Install Pterodactyl Panel + Node"
 echo "  4) Install Playit"
-echo "  5) Lapio's Custom Dash ChunkDash"
 echo "  0) Exit"
 echo
 read -p "Enter choice: " choice
@@ -231,79 +230,6 @@ elif [ "$choice" = "4" ]; then
   sudo apt update
   sudo apt install -y playit
   echo "[INFO] Playit VPN installed successfully. You can now run 'playit' command."
-
-# =======================================
-# Option 5 → Lapio's Custom Dash ChunkDash
-# =======================================
-elif [ "$choice" = "5" ]; then
-  echo "Lapio's Custom Dash ChunkDash"
-  echo "Choose a theme:"
-  echo "  1) Feastic Theme"
-  echo "  2) Soon"
-  echo "  3) Soon"
-  echo "  4) Soon"
-  echo "  0) Back"
-  read -p "Enter theme choice: " theme_choice
-
-  if [ "$theme_choice" = "1" ]; then
-    echo "[INFO] You selected Feastic Theme."
-    
-    # Remove existing folder if exists
-    if [ -d "Hosting-panel" ]; then
-        rm -rf Hosting-panel
-    fi
-
-    # Clone repo first
-    git clone https://github.com/deadlauncherg/Hosting-panel.git
-    cd Hosting-panel || exit
-
-    # Show message to update settings.json
-    echo "⚠️  Make sure to update your settings.json before running (node .)."
-
-    #Run nvm installer
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-
-    #Run nvm exporter
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-    #Run Reload source
-    source ~/.bashrc
-
-    #Run nvm cmds
-    nvm install 18
-    nvm use 18
-    nvm alias default 18
-    
-    #Run verify nvm version
-    node -v
-    npm -v
-    
-    #Run apt install sudo
-    apt install sudo
-    
-    #Run sudo apt update
-    sudo apt update
-
-    #Run npm install
-    npm install
-
-    # Optionally open settings.json (uncomment if needed)
-    # nano settings.json
-
-    echo "[INFO] Feastic Theme setup done!"
-    echo "Here is your custom banner:"
-
-    # Multi-line ASCII banner
-    cat << "BANNER"
-  _                _          ____                           
- | |    __ _ _ __ (_) ___    / ___| __ _ _ __ ___   ___ _ __ 
- | |   / _` | '_ \| |/ _ \  | |  _ / _` | '_ ` _ \ / _ \ '__|
- | |__| (_| | |_) | | (_) | | |_| | (_| | | | | | |  __/ |   
- |_____\__,_| .__/|_|\___/   \____|\__,_|_| |_| |_|\___|_|   
-            |_|                                              
-BANNER
-
   fi
   
 # =======================================
